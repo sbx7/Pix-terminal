@@ -7,7 +7,7 @@ while True:
     cl = input(os.getcwd())
     spliting=cl.split()
     
-    #checks what cmd you typed and gives a response
+    #checks what cmd you typed and gives a response (will optimize soon maybe)
     if cl == "ls":
         for file in os.listdir():
             print(file)
@@ -34,7 +34,8 @@ while True:
     
     elif spliting[0] == "dir":
         os.mkdir(spliting[1])
-            
+
+    # TO:DO find out how the fuck i can run this on a raspberry pi pico        
     elif spliting[0] == "file":
         if spliting[1] == "n":
             file = open(spliting[2], 'w')
@@ -56,17 +57,20 @@ while True:
                 
         elif spliting[1] == "r":
             os.rename(spliting[2], spliting[3])
-            #except IsADirectoryError:
-                #print("Source is a file but destination is a directory.")
+            '''
+            #dont work on a pico
+            except IsADirectoryError:
+                print("Source is a file but destination is a directory.")
   
-            #except NotADirectoryError:
-                #print("Source is a directory but destination is a file.")
+            except NotADirectoryError:
+                print("Source is a directory but destination is a file.")
 
-            #except PermissionError:
-                #print("Operation not permitted.")
+            except PermissionError:
+                print("Operation not permitted.")
 
-            #except OSError as error:
+            except OSError as error:
                 #print(error)
+            '''
      
     elif spliting[0] == "say":
         print(spliting[1])
